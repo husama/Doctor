@@ -1,9 +1,0 @@
-package com.zhoukewei.nlp.service;
-
-import com.zhoukewei.nlp.eneity.User;
-
-public interface UserService {
-	User add(User user);
-	boolean queryUser(User user);
-}
-

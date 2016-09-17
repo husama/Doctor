@@ -1,7 +1,0 @@
-package com.zhoukewei.nlp.service;
-
-import java.util.List;
-
-public interface SerchService {
-	public List<Long> searchCaseId(String keyWord);
-}
