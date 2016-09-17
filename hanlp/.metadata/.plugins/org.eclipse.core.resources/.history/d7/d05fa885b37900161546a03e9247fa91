@@ -1,0 +1,44 @@
+package com.zhoukewei.nlp.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.zhoukewei.nlp.eneity.Case;
+import com.zhoukewei.nlp.service.SerchService;
+
+@Controller
+public class SearchController {//搜索控制器
+	
+	@Autowired
+	private SerchService serchService;
+	
+	@RequestMapping("/search")//查找  排序并返回处理结果
+	public String search(String keyword,Model model){
+		System.out.println(keyword);
+		List<Case> cases=serchService.searchCaseId(keyword);
+		function(cases);
+		model.addAllAttributes(cases);
+		return "temp";
+	}
+		
+	@RequestMapping("/search/{case_id}")//返回点击页面
+	public String returnCasePage(@PathVariable Long id,Model model){
+		
+		return "succeed";
+	}
+	
+	private void function(List<Case> cases){
+		for(int i=0;i<cases.size();i++){
+			for(int j=0;j<6;j++){
+				System.out.print(cases.get(j)+"  ");
+			}
+			System.out.println();
+		}
+	}
+}
+

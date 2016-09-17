@@ -1,0 +1,7 @@
+INDEX VERSION 1.3+E:\project\hanlp\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2073812155.index
+312724573.index
+2802649996.index
+3966274507.index
+444937247.index
+709929725.index

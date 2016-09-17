@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		function myFunction(number,commodity)
+		{
+			document.write("数量"+num+"@"+commodity);
+			var a=0;
+			var num=0;
+			if(commodity=="malatang")
+				a=10;
+			if(commodity=="shaguo")
+				a=8;
+			if(commodity=="mixian")
+				a=12;
+			if(commodity=="suanlafen")
+				a=9;
+			document.write("总金额"+a*num);
+		}
+		</script>
+	<form action="request" method="post">
+		<table>
+			<tr>
+				<th>姓名:</th>
+				<td><input type="text" id="name" name="name"/></td>
+			</tr>
+			<tr>
+				<th>电话:</th>
+				<td><input type="text" id="phone" name="phone"/></td>
+			</tr>
+			<tr>
+				<th>商品 :</th>
+				<td>
+					<select name="commodity">
+					<option value="malatang">麻辣烫 &nbsp;10元</option>
+					<option value="shaguo">砂锅 &nbsp;8元</option>
+					<option value="mixian">米线&nbsp;12元</option>
+					<option value="suanlafen">酸辣粉&nbsp;9元</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>数量:</th>
+				<td><input type="text" id="number" name="number"/></td>
+			</tr>
+			<tr>
+				<td><input type="submit" id="submit" value="login" onclick="myFunction(number,commodity)"/></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

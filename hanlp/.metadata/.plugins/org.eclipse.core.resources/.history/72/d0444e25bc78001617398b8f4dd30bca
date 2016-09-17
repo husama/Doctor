@@ -1,0 +1,66 @@
+package com.zhoukewei.nlp.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.zhoukewei.nlp.eneity.Answer;
+import com.zhoukewei.nlp.eneity.Case;
+import com.zhoukewei.nlp.util.JDBCTools;
+
+@Service
+public class SearchServiceImpl implements SerchService{
+	private String keyWord; //关键词
+	private List<Case> cases;//病例
+	private JDBCTools jdbc;
+	
+	public SearchServiceImpl(){
+		jdbc=new JDBCTools();
+	}
+	public List<Long> searchCaseId(String keyWord){
+		List<Long> caseId=new ArrayList<Long>();//结果的id
+		
+		//需要大改*********************
+		//查找
+		String sql="select * from case_table join answer_table on case_table.answer_id=answer_table.answer_id";
+		//访问数据库 是否存在
+		List<List<String>> lists=jdbc.queryList(sql);//sql语句
+	
+		//排序
+		
+		
+		//给case赋值
+		if(lists.size()==0)//判断 是否存在账户 列为0 表明没有 账户
+			return null;
+		List<String> list=lists.get(0);
+		Case casetemp=new Case();
+		Answer answertemp=new Answer();
+		long idtemp=Integer.valueOf(list.get(0)).intValue();//获得case_id值 
+		casetemp.setCase_id(idtemp);
+		casetemp.setQuestion_type(list.get(1));
+		casetemp.setQuestion_time(list.get(2));
+		casetemp.setQuestion_title(list.get(3));
+		casetemp.setQuestion_desc(list.get(4));
+		casetemp.setQuestion_help(list.get(5));
+//		casetemp.setCases();
+		cases.add(casetemp);
+		
+		for(int i=1;i<lists.size();i++){
+			lists.get(i);	
+			
+			
+			while(Integer.valueOf(list.get(i)).intValue()==idtemp){
+				answertemp.setAnswer_id(Integer.valueOf(list.get(6)).intValue());
+				answertemp.setDoctor_id(Integer.valueOf(list.get(7)).intValue());
+				answertemp.setBool_adopt(Integer.valueOf(list.get(8)).intValue());
+				answertemp.setAnswer_time(list.get(9));
+				answertemp.setAnswer_analysis(list.get(10));
+				answertemp.setAnswer_suggest(list.get(11));
+				i++;
+			}
+			idtemp=Integer.valueOf(list.get(i)).intValue();//获得case_id值 
+		}
+		return caseId;
+	}
+}

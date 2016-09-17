@@ -1,0 +1,28 @@
+package com.zhoukewei.nlp.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.zhoukewei.nlp.eneity.User;
+
+	@Autowired
+	private SerchService serchService;
+	
+	@Controller
+	public class SearchController {//搜索控制器
+
+	@RequestMapping("/search")//查找  排序并返回处理结果
+	public String search(Model model){
+		search
+		return "temp";
+	}
+	@RequestMapping("/search/{case_id}")//返回点击页面
+	public String returnCasePage(@PathVariable Long id,Model model){
+		
+		return "succeed";
+	}
+}
+

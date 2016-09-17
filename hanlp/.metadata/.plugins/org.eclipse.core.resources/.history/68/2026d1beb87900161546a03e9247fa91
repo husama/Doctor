@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="com.zhoukewei.nlp.eneity.Case" %>
+<%@ page import="com.zhoukewei.nlp.eneity.Answer" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script type="text/javascript">
+		function sprint(){
+			document.write(cases.size().value);
+			var i=0;
+			
+				document.write("id:"+cases.get(0).getCase_id());
+				document.write("ty:"+cases.get(0).getQuestion_desc());
+				document.write("time:"+cases.get(0).getQuestion_help());
+				document.write("title"+cases.get(0).question_title);
+				document.write("desc:"+cases.get(0).getQuestion_title());
+				document.write("help:"+cases.get(0).getAnswers().get(1).getAnswer_suggest());
+			
+		}
+	</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">sprint();</script>
+</body>
+</html>
